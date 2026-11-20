@@ -1,0 +1,43 @@
+import RobotProfileImage from '../assets/robot.png'
+import userProfileImage from '../assets/user.png'
+
+
+export function ChatMessage({message, sender}) {
+  //const message = props.message;
+  //const sender = props.sender;
+  //const {message, sender} = props;
+
+  /*if(sender === 'robot'){
+    return(
+      <div>
+        <img src="robot.png" alt="sry" width="50"></img>
+        {message}
+    </div>
+    )
+  }
+    using guard operator because we cannot write a if statement inside the JSX, if the first half is correct the second half will run otherwise it will not*/
+
+  return (
+    <div className={
+      sender === 'user' 
+        ? "chat-message-user" 
+        : "chat-message-robot"
+    }>
+      {sender === 'robot' && (
+        <img src={RobotProfileImage}
+          className="chat-message-profile"
+        ></img>
+      )} 
+    <div className="chat-message-text">
+      {message}
+    </div>
+      
+      {sender === 'user' && (
+        <img src={userProfileImage} 
+          className="chat-message-profile"
+        />
+      )}
+
+    </div>
+  )
+}
